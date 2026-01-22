@@ -22,6 +22,11 @@ const PORT = 3000;
     await sequelize.sync();
     console.log("Base de données connectée");
 
+  // Pour render
+  app.get("/", (req, res) => {
+  res.send("🍬 Bienvenue sur Carambar API 🍬. Utilisez /swagger pour la documentation.");
+});
+
     app.listen(PORT, () => {
       console.log(`Serveur lancé sur http://localhost:${PORT}`);
     });
