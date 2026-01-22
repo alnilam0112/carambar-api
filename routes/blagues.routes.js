@@ -3,7 +3,30 @@ const router = express.Router();
 const Blague = require("../models/blague.model");
 
 /**
- * POST - Ajouter une blague
+ * @swagger
+ * /api/v1/blagues:
+ *   post:
+ *     summary: Ajouter une nouvelle blague
+ *     tags:
+ *       - Blagues
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               question:
+ *                 type: string
+ *                 example: "Pourquoi les développeurs aiment le café ?"
+ *               answer:
+ *                 type: string
+ *                 example: "Parce que sans Java, ils plantent."
+ *     responses:
+ *       201:
+ *         description: Blague ajoutée avec succès
+ *       400:
+ *         description: Champs manquants
  */
 router.post("/", async (req, res) => {
   try {
@@ -21,7 +44,28 @@ router.post("/", async (req, res) => {
 });
 
 /**
- * GET - Toutes les blagues
+ * @swagger
+ * /api/v1/blagues:
+ *   get:
+ *     summary: Récupérer toutes les blagues
+ *     tags:
+ *       - Blagues
+ *     responses:
+ *       200:
+ *         description: Liste des blagues
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: array
+ *               items:
+ *                 type: object
+ *                 properties:
+ *                   id:
+ *                     type: integer
+ *                   question:
+ *                     type: string
+ *                   answer:
+ *                     type: string
  */
 router.get("/", async (req, res) => {
   try {
@@ -33,7 +77,35 @@ router.get("/", async (req, res) => {
 });
 
 /**
- * GET - Blague par ID
+ * @swagger
+ * /api/v1/blagues/{id}:
+ *   get:
+ *     summary: Récupérer une blague par ID
+ *     tags:
+ *       - Blagues
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: integer
+ *         description: ID de la blague
+ *     responses:
+ *       200:
+ *         description: Blague trouvée
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 id:
+ *                   type: integer
+ *                 question:
+ *                   type: string
+ *                 answer:
+ *                   type: string
+ *       404:
+ *         description: Blague non trouvée
  */
 router.get("/:id", async (req, res) => {
   try {
@@ -50,7 +122,26 @@ router.get("/:id", async (req, res) => {
 });
 
 /**
- * GET - Blague aléatoire
+ * @swagger
+ * /api/v1/blagues/random/one:
+ *   get:
+ *     summary: Récupérer une blague aléatoire
+ *     tags:
+ *       - Blagues
+ *     responses:
+ *       200:
+ *         description: Une blague aléatoire
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 id:
+ *                   type: integer
+ *                 question:
+ *                   type: string
+ *                 answer:
+ *                   type: string
  */
 router.get("/random/one", async (req, res) => {
   try {
@@ -66,3 +157,4 @@ router.get("/random/one", async (req, res) => {
 });
 
 module.exports = router;
+
