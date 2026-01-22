@@ -59,8 +59,7 @@ http://localhost:3000
 
 ## Endpoints principaux
 
-Méthode  |	Endpoint	                 |  Description
-GET      |	/api/v1/blagues              |	Récupérer toutes les blagues
-GET      |	/api/v1/blagues/{id}	     |  Récupérer une blague par ID
-GET	     |  /api/v1/blagues/random/one   |	Récupérer une blague aléatoire
-POST     |	/api/v1/blagues	             |  Ajouter une nouvelle blague (JSON : { "question": "...", "answer": "..." })
+- **methode :** GET  |  **Endpoint :** /api/v1/blagues  |  **Description :** Récupérer toutes les blagues
+- **methode :** GET  |  **Endpoint :** /api/v1/blagues/{id}  |  **Description :** Récupérer une blague par ID
+- **methode :** GET  |  **Endpoint :**  /api/v1/blagues/random/one  |  **Description :** Récupérer une blague aléatoire
+- **methode :** POST  |  **Endpoint :**  /api/v1/blagues  |  **Description :** Ajouter une nouvelle blague (JSON : { "question": "...", "answer": "..." })
